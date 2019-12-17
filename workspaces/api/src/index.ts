@@ -1,4 +1,9 @@
 import * as express from 'express';
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+
+dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
+
 const app = express();
 const port = 8080;
 
