@@ -2,6 +2,9 @@ import * as express from 'express';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import * as mongoose from 'mongoose';
+import * as bodyParser from 'body-parser';
+
+import { vote } from './routes';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
@@ -19,9 +22,11 @@ if (connectionString) {
 const app = express();
 const port = 8080;
 
-app.get('/', (_, res) => {
-  res.send('Hello world');
-});
+//middlewares
+app.use(bodyParser.json());
+
+// route
+app.use('/vote', vote);
 
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
