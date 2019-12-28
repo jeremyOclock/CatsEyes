@@ -1,10 +1,10 @@
 import { RequestHandler } from 'express';
 import Cat from '../../models/Cat';
 import { ErrorMessage } from '../../types/responses';
-import { ISubmitVoteInput } from 'src/types/vote';
+import { IVoteInput } from '../../types/vote';
 
-const submitVote: RequestHandler = async (req, res) => {
-  const { id }: ISubmitVoteInput = req.body;
+const Vote: RequestHandler = async (req, res) => {
+  const { id }: IVoteInput = req.body;
 
   const cat = await Cat.findOne({ originalID: id });
 
@@ -23,4 +23,4 @@ const submitVote: RequestHandler = async (req, res) => {
   res.sendStatus(201);
 };
 
-export default submitVote;
+export default Vote;

@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
 
-import { vote } from './routes';
+import routes from './routes';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
@@ -26,7 +26,7 @@ const port = 8080;
 app.use(bodyParser.json());
 
 // route
-app.use('/vote', vote);
+app.use(routes);
 
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);

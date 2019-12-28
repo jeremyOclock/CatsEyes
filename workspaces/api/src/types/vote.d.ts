@@ -1,5 +1,5 @@
 import { ICat } from '../models/Cat';
 
-export interface ISubmitVoteInput {
+export interface IVoteInput {
   id: ICat['originalID'];
 }

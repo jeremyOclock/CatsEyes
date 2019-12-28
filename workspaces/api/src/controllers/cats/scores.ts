@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 import Cat from '../../models/Cat';
 
-const getVotes: RequestHandler = async (req, res) => {
+const scores: RequestHandler = async (req, res) => {
   let { page, limit } = req.query;
 
   limit = +limit || 50;
@@ -21,4 +21,4 @@ const getVotes: RequestHandler = async (req, res) => {
   }
 };
 
-export default getVotes;
+export default scores;
