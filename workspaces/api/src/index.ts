@@ -5,6 +5,7 @@ import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
 
 import routes from './routes';
+import { ErrorMessage } from './types/responses';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
@@ -22,11 +23,20 @@ if (connectionString) {
 const app = express();
 const port = 8080;
 
-//middlewares
+// middlewares
 app.use(bodyParser.json());
 
 // route
 app.use(routes);
+
+// 404 (keep at the end)
+app.use((_, res) => {
+  const errorMessage: ErrorMessage = {
+    message: 'Not found'
+  };
+
+  res.status(404).send(errorMessage);
+});
 
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
