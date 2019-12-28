@@ -6,14 +6,14 @@ import { IVoteInput } from '../../types/vote';
 const Vote: RequestHandler = async (req, res) => {
   const { id }: IVoteInput = req.body;
 
-  const cat = await Cat.findOne({ originalID: id });
+  const cat = await Cat.findOne({ _id: id });
 
   try {
     if (cat) {
       await cat.updateOne({ $set: { score: +cat.score + 1 } });
     } else {
-      const newCat = new Cat({ originalID: id, score: 1 });
-      await newCat.save();
+      const error: ErrorMessage = { message: 'Cat not found' };
+      res.status(404).send(error);
     }
   } catch (e) {
     const error: ErrorMessage = { message: 'Could not update cat score' };
