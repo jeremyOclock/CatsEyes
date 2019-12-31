@@ -1,3 +1,18 @@
-h1 {
-  color: lightblue;
+@import '../../style/utils/vars.scss';
+
+.cats {
+  &__title {
+    font-size: 6vmin;
+
+    background: linear-gradient(to top, $c-orange 20%, $c-yellow);
+    background-clip: text;
+    color: transparent;
+    position: absolute;
+
+    padding: 10px;
+
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

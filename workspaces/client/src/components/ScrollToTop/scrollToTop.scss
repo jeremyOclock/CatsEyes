@@ -1,0 +1,36 @@
+@import '../../style/utils/vars.scss';
+
+.scrollToTop {
+  $size: 45px;
+
+  z-index: 50;
+
+  height: $size;
+  width: $size;
+
+  position: fixed;
+
+  bottom: 20px;
+  right: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $c-spliter;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition: 250ms;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  & > i {
+    color: $c-background;
+    font-size: 2em;
+  }
+}

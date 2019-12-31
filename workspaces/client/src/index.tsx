@@ -6,6 +6,9 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux';
 
+import './style/index.scss';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 const rootComponent = (
   <Provider store={store}>
     <Router>
