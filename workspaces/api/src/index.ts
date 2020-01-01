@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import * as path from 'path';
 import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
 
 import routes from './routes';
 import { ErrorMessage } from './types/responses';
@@ -23,8 +24,12 @@ if (connectionString) {
 const app = express();
 const port = 8080;
 
+// options
+app.options('*', cors());
+
 // middlewares
 app.use(bodyParser.json());
+app.use(cors());
 
 // route
 app.use(routes);
