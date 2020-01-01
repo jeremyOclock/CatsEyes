@@ -1,35 +1,52 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
 import './matchsCats.scss';
 import { Link } from 'react-router-dom';
+import { useSelector } from '../../hooks/useSelector';
+import { useDispatch } from 'react-redux';
+import { fetchData, vote } from '../../redux/actions/feature/matchscats';
 
-import img1 from '../../assets/images/chat1.jpg';
-import img2 from '../../assets/images/chat2.jpg';
+const MatchsCats: React.FC = () => {
+  const { cats } = useSelector(state => state.matchsCats);
 
-const MatchsCats: React.FC = () => (
-  <div className="matchs-cats">
-    <section className="matchs-cats__card-left">
-      <i
-        className="matchs-cats__card-left__img"
-        style={{ backgroundImage: `url(${img1})` }}
-      />
-    </section>
+  const dispatch = useDispatch();
 
-    <h2 className="matchs-cats__title">Who's the cutest?</h2>
+  const handleVote = (id: string) => () => {
+    dispatch(vote(id));
+  };
 
-    <section className="matchs-cats__card-right">
-      <i
-        className="matchs-cats__card-right__img"
-        style={{ backgroundImage: `url(${img2})` }}
-      />
-    </section>
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
 
-    <footer className="matchs-cats__footer">
-      <Link to="/results" className="matchs-cats__footer__button">
-        <i className="fas fa-list matchs-cats__footer__button__icon"></i>
-      </Link>
-    </footer>
-  </div>
-);
+  return cats ? (
+    <div className="matchs-cats">
+      <section className="matchs-cats__card-left">
+        <i
+          onClick={handleVote(cats[0]._id)}
+          className="matchs-cats__card-left__img"
+          style={{ backgroundImage: `url(${cats[0].image})` }}
+        />
+      </section>
+
+      <h2 className="matchs-cats__title">Who's the cutest?</h2>
+
+      <section className="matchs-cats__card-right">
+        <i
+          onClick={handleVote(cats[1]._id)}
+          className="matchs-cats__card-right__img"
+          style={{ backgroundImage: `url(${cats[1].image})` }}
+        />
+      </section>
+
+      <footer className="matchs-cats__footer">
+        <Link to="/results" className="matchs-cats__footer__button">
+          <i className="fas fa-list matchs-cats__footer__button__icon"></i>
+        </Link>
+      </footer>
+    </div>
+  ) : (
+    <>loading</>
+  );
+};
 
 export default MatchsCats;
