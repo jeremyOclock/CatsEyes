@@ -1,11 +1,13 @@
 import { RequestHandler } from 'express';
 import Cat, { ICat } from '../../models/Cat';
 
+export type CatsDuoResponse = [ICat, ICat];
+
 const randomDuo: RequestHandler = async (_, res) => {
   const catsLength = await Cat.count({});
 
   // get two random cats which are not equals
-  const getRandomDuo = async (): Promise<[ICat, ICat]> => {
+  const getRandomDuo = async (): Promise<CatsDuoResponse> => {
     const generateRandomNumber = () => Math.floor(Math.random() * catsLength);
 
     const firstNumber = generateRandomNumber();
