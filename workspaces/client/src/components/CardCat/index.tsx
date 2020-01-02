@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ICat } from '../../../../api/src/models/Cat';
+import { ICat } from '@workspaces/api/src/models/Cat';
 import { animated, useSpring, interpolate } from 'react-spring';
 import './cardCat.scss';
 
