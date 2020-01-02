@@ -16,8 +16,8 @@ For the application to work properly, you must install [node.js](https://nodejs.
 
 Dev environment
 
-`yarn start`
+`yarn workspace [workspace_name] start`
 
 Prod environment
 
-`yarn prod`
+`yarn workspace [workspace_name] prod`
