@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ts-node-dev ./src/index.ts",
     "build": "tsc",
-    "prod": "tsc && node ./build/index.js"
+    "prod": "tsc && pm2 start ./build/index.js"
   },
   "dependencies": {
     "@types/cors": "^2.8.6",
@@ -16,6 +16,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.8.1",
+    "pm2": "^4.2.1",
     "typescript": "^3.7.3"
   },
   "devDependencies": {
