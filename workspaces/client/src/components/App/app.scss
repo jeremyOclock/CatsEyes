@@ -2,7 +2,7 @@
 
 .cats {
   &__title {
-    font-size: 6vmin;
+    font-size: 4em;
 
     background: linear-gradient(to top, $c-orange 20%, $c-yellow);
     background-clip: text;
@@ -14,5 +14,15 @@
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
+  }
+}
+
+@media only screen and (max-width: $c-tablet) {
+  .cats {
+    &__title {
+      font-size: 2.8em;
+      width: 100%;
+      text-align: center;
+    }
   }
 }

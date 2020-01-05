@@ -25,7 +25,8 @@
   }
 
   &__title {
-    font-size: 2em;
+    font-size: 4vmin;
+
     color: $c-non-active;
 
     position: absolute;
@@ -72,6 +73,17 @@
       }
 
       font-size: 2em;
+    }
+  }
+}
+
+@media only screen and (max-width: $c-tablet) {
+  .matchs-cats {
+    &__title {
+      width: 100%;
+      text-align: center;
+      font-size: 1.4em;
+      top: 30%;
     }
   }
 }
